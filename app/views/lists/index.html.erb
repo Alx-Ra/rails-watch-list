@@ -1,8 +1,32 @@
-<h1>Movie List</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/736x/f7/3c/3a/f73c3ac34a0a6dbaa5b7ead1a9677899.jpg); height: 300px; display: flex; justify-content: center; align-items: center;">
+  <div class="container" style="color: white; text-align: center;">
+    <h1>Movie List</h1>
+  </div>
+</div>
 
-<ul class="list-group">
+<%= link_to new_list_path(@list), class: "btn btn-primary", style: "color: white; display: inline-block; text-decoration: none;" do %>
+  Add a new list
+<% end %>
+
+
+<div class="container mt-5">
+  <!-- Début de la ligne -->
+  <div class="row">
+    <!-- Boucle pour afficher chaque carte -->
     <% @lists.each do |list| %>
-    <li class="list-group-item"><%= link_to list.name, list_path(list)%></li>
-  <% end %>
-</ul>
-<%= link_to "Add a new list", new_list_path(@list)%>
+      <div class="col-md-4 mb-4">
+        <!-- Envelopper la carte entière dans le lien -->
+        <%= link_to list_path(list), class: 'card-link' do %>
+          <div class="card bg-dark text-white rounded" style="height: 200px; display: flex; justify-content: center; align-items: center;">
+            <!-- Centrer le texte -->
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+              <h5 class="card-title text-center w-100">
+                <%= list.name %>
+              </h5>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
