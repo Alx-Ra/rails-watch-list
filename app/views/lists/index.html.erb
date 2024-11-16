@@ -17,8 +17,7 @@
       <div class="col-md-4 mb-4">
         <!-- Envelopper la carte entière dans le lien -->
         <%= link_to list_path(list), class: 'card-link' do %>
-          <div class="card bg-dark text-white rounded" style="height: 200px; display: flex; justify-content: center; align-items: center;">
-            <!-- Centrer le texte -->
+          <div class="card bg-dark text-white rounded" style="height: 200px; display: flex; justify-content: center; align-items: center;  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
             <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title text-center w-100">
                 <%= list.name %>

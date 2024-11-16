@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "open-uri"
 
 Bookmark.delete_all
 puts "deleting bookmarks"
@@ -24,3 +25,8 @@ Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal masterm
 Movie.create(title: "The Hobbit, an unexpeted journey", overview: "A well mannered Hobbit named Bilbo Baggins, embarks upon a journey to take back a kingdom, and a very important jewel ,with twelve dwarves, and a wizard.", poster_url: "https://i.pinimg.com/474x/83/c6/2a/83c62a6fc2bd8c1977f9850d8d75e48c.jpg", rating: 8.9)
 
 puts "#{Movie.count} movies created"
+
+file = URI.parse("https://i.pinimg.com/736x/b6/dd/34/b6dd34b9a46b018cf715e943d8891988.jpg").open
+list = List.new(name: "Fantasy")
+list.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+list.save
